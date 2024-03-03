@@ -9,7 +9,7 @@ const transaction = async (req, res) => {
         const query = {
             dateOfSale: {
                 $gte: new Date('2021-01-01'), // Start of 2021
-                $lte: new Date('2022-12-31')  // End of 2022
+                $lte: new Date('2023-12-31')  // End of 2022
               }
         };
         if (month) {
@@ -20,13 +20,27 @@ const transaction = async (req, res) => {
           endDate.setMonth(startDate.getMonth() + 1);
         //   query.dateOfSale = { $gte: startDate, $lt: endDate };
         }
-        // if (search) {
+        if (search) {
         //   query.$or = [
         //     { title: { $regex: search, $options: 'i' } },
         //     { description: { $regex: search, $options: 'i' } },
         //     { price: { $regex: search, $options: 'i' } }
         //   ];
-        // }
+
+        const numericSearch = parseFloat(search);
+      if (!isNaN(numericSearch)) {
+        // If the search term is numeric, search the price field
+        query.price = numericSearch;
+      } else {
+        // Otherwise, search the title and description fields
+        query.$or = [
+          { title: { $regex: search, $options: 'i' } },
+          { description: { $regex: search, $options: 'i' } }
+        ];
+      }
+        }
+
+        
     
         // Execute query with pagination
         console.log(query);
