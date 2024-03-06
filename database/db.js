@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
-// const USERNAME=process.env.DB_USERNAME;
-// const PASSWORD=process.env.DB_PASSWORD;
+
 const Connection = async () => {
     const URL = process.env.URL;
     try {
