@@ -1,5 +1,5 @@
-const Transaction = require('../model/seeds.js');
-const { getMonthQuery } = require('../utils/monthUtils.js');
+const Transaction= require('../model/seeds.js')
+const { getMonthQuery } = require('../../utils/monthUtils.js');
 
 const transaction = async (req, res) => {
   try {
@@ -12,36 +12,6 @@ const transaction = async (req, res) => {
         $lte: new Date('2023-12-31')  // End of 2022
       }
     };
-
-    // if (month) {
-    //   // Convert month string to its corresponding number
-    //   const monthMap = {
-    //   January: 1,
-    //   February: 2,
-    //   March: 3,
-    //   April: 4,
-    //   May: 5,
-    //   June: 6,
-    //   July: 7,
-    //   August: 8,
-    //   September: 9,
-    //   October: 10,
-    //   November: 11,
-    //   December: 12
-    //   };
-
-    //   // Check if the month provided is valid
-    //   if (monthMap.hasOwnProperty(month)) {
-    //   const monthNumber = monthMap[month];
-    //   const startDate = new Date(`2021-${monthNumber}-01`);
-    //   const endDate = new Date(startDate);
-    //   endDate.setMonth(startDate.getMonth() + 1);
-    //   query.dateOfSale = { $gte: startDate, $lt: endDate };
-    //   } else {
-    //     return res.status(400).json({ error: 'Invalid month provided' });
-    //   }
-    // }
-
 
     if (month) {
       try {
