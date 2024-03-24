@@ -1,4 +1,4 @@
-const Transaction= require('../model/seeds.js')
+const Transaction = require('../model/seeds.js')
 const { getMonthQuery } = require('../../utils/monthUtils.js');
 
 const transaction = async (req, res) => {
@@ -15,11 +15,11 @@ const transaction = async (req, res) => {
 
     if (month) {
       try {
-          query.dateOfSale = getMonthQuery(month);
+        query.dateOfSale = getMonthQuery(month);
       } catch (error) {
-          return res.status(400).json({ error: error.message });
+        return res.status(400).json({ error: error.message });
       }
-  }
+    }
 
     if (search) {
       const numericSearch = parseFloat(search);
@@ -38,12 +38,9 @@ const transaction = async (req, res) => {
 
 
     // Execute query with pagination
-    console.log(query);
-    // const transactions=await Transaction.find(query);
     const transactions = await Transaction.find(query)
       .skip((page - 1) * perPage)
       .limit(perPage);
-    console.log(transactions);
 
     res.json(transactions);
   } catch (error) {

@@ -28,7 +28,6 @@ const statistics = async (req, res) => {
         const totalSoldItems = await ProductTransaction.countDocuments({
             dateOfSale: { $gte: startDate, $lt: endDate }
         });
-
         // Query for total number of not sold items of selected month
         const totalNotSoldItems = await ProductTransaction.countDocuments({
             dateOfSale: { $gte: startDate, $lt: endDate },
