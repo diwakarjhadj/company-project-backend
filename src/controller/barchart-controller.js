@@ -4,7 +4,6 @@ const { generatePriceRanges } = require('../../utils/priceRangeUtils.js');
 
 
 const barchart = async (req, res) => {
-    console.log("hi");
     try {
         const { month } = req.query;
 

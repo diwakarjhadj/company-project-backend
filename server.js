@@ -8,6 +8,5 @@ const app = express();
 app.use(cors()); 
 Connection();
 app.use('/', routes);
-// app.use(require('./routes/route'));
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server is running successfully on port ${PORT}`));
