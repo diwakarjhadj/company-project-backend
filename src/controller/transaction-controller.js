@@ -3,7 +3,7 @@ const { getMonthQuery } = require('../../utils/monthUtils.js');
 
 const transaction = async (req, res) => {
   try {
-    const { month, search, page = 1, perPage = 10 } = req.query;
+    const { month, search, page = 1, perPage = 100 } = req.query;
 
     // Build query
     const query = {
