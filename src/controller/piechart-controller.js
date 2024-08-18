@@ -9,7 +9,6 @@ const piechart = async (req, res) => {
         const transactions = await Transaction.find({
             dateOfSale: monthQuery // Match any day in the selected month
         });
-        console.log(transactions);
 
         // Extract unique categories from the transactions
         const uniqueCategories = [...new Set(transactions.map(transaction => transaction.category))];
